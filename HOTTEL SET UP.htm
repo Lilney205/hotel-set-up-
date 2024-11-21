@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RANIF HOTEL - Welcome</title>
+    <style>
+        /* Default dark mode styling */
+        body.dark-mode {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #f9f9f9;
+            text-align: center;
+            padding: 20px;
+        }
+        /* Light mode styling */
+        body.light-mode {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #2a7f2f;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #555;
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
+        .menu {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .menu.light-mode {
+            background-color: #fff;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .toggle-mode {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #555;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .toggle-mode:hover {
+            background-color: #444;
+        }
+        .location {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+<h1>Welcome to RANIF HOTEL</h1>
+<h2>Your comfort and satisfaction are our top priorities. Please explore our menu and feel at home!</h2>
+
+<div class="menu">
+    <div class="menu-item">
+        <span>Chapati</span>
+        <button onclick="orderFood('Chapati')">Order</button>
+    </div>
+    <div class="menu-item">
+        <span>Ugali + Matumbo</span>
+        <button onclick="orderFood('Ugali + Matumbo')">Order</button>
+    </div>
+    <div class="menu-item">
+        <span>Ugali + Nyama</span>
+        <button onclick="orderFood('Ugali + Nyama')">Order</button>
+    </div>
+    <div class="menu-item">
+        <span>Ugali + Vegetables</span>
+        <button onclick="orderFood('Ugali + Vegetables')">Order</button>
+    </div>
+    <div class="menu-item">
+        <span>Beans</span>
+        <button onclick="orderFood('Beans')">Order</button>
+    </div>
+</div>
+
+<button class="toggle-mode" onclick="toggleMode()">Switch to Light Mode</button>
+
+<div class="location">
+    <p>Location: Matungu Mayoni Subcounty, opposite the sub-county hospital.</p>
+</div>
+
+<script>
+    // Function to handle order button click
+    function orderFood(food) {
+        const phoneNumber = "0719723915";
+        const message = `Hello, I would like to order ${food} from RANIF HOTEL.`;
+        const url = `https://wa.me/254${phoneNumber.slice(1)}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    // Toggle between dark and light modes
+    function toggleMode() {
+        const body = document.body;
+        body.classList.toggle('dark-mode');
+        body.classList.toggle('light-mode');
+
+        const menu = document.querySelector('.menu');
+        menu.classList.toggle('light-mode');
+
+        const toggleButton = document.querySelector('.toggle-mode');
+        if (body.classList.contains('light-mode')) {
+            toggleButton.textContent = 'Switch to Dark Mode';
+        } else {
+            toggleButton.textContent = 'Switch to Light Mode';
+        }
+    }
+</script>
+
+</body>
+</html>
